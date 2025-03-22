@@ -28,5 +28,6 @@ def load_pickle(file_path):
         # for key, value in data.items():
         #     print(f"{key}: {value}")
 
-# read_all_json('/Users/jim/Projects/p1/PythonFundamentals.Exercises.Part9/data/super_smash_bros/')
-
+# data = read_all_json('/Users/jim/Projects/p1/PythonFundamentals.Exercises.Part9/data/super_smash_bros/')
+#
+# write_pickle('/Users/jim/Projects/p1/PythonFundamentals.Exercises.Part9/data/super_smash_bros/', data)
