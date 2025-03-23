@@ -54,3 +54,11 @@ class JsonHelperTester(unittest.TestCase):
 
         print(f"{expected_md5} : {actual_md5}")
         self.assertEqual(expected_md5, actual_md5)
+
+    def test_load_pickle(self):
+        expected = self._json_stubs
+
+        file_path = os.path.join("/Users/jim/Projects/p1/PythonFundamentals.Exercises.Part9/super_smash_characters.pickle")
+        actual = json_helper.read_json(file_path)
+
+        self.assertEqual(expected, actual)
