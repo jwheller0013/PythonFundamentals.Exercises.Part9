@@ -1,6 +1,7 @@
 import unittest
 import os
 import json_helper
+import hashlib
 
 class JsonHelperTester(unittest.TestCase):
 
@@ -35,3 +36,21 @@ class JsonHelperTester(unittest.TestCase):
         file_path = os.path.join('./', 'data', 'super_smash_bros')
         actual = json_helper.read_all_json(file_path)
         self.assertEqual(expected,actual)
+
+    def _getmd5 (self, file):
+        hasher = hashlib.md5()
+        with open(file, 'rb') as file:
+            buf = file.read()
+            hasher.update(buf)
+        return hasher.hexdigest()
+
+    def test_write_pickle(self):
+        expected_md5 = self._getmd5("/Users/jim/Projects/p1/PythonFundamentals.Exercises.Part9/super_smash_characters.pickle")
+
+        contents = self._json_stubs
+        json_helper.write_pickle("/Users/jim/Projects/p1/PythonFundamentals.Exercises.Part9/super_smash_characters.pickle",
+                                 contents)
+        actual_md5 = self._getmd5("/Users/jim/Projects/p1/PythonFundamentals.Exercises.Part9/super_smash_characters.pickle")
+
+        print(f"{expected_md5} : {actual_md5}")
+        self.assertEqual(expected_md5, actual_md5)
